@@ -2,6 +2,8 @@ package ru.matveyakulo.booksearcher.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "article")
 public class Article {
@@ -18,4 +20,7 @@ public class Article {
 
     @Column(name = "url")
     private String url;
+
+    private LocalDateTime creationDate;
+    private LocalDateTime dropDate;
 }

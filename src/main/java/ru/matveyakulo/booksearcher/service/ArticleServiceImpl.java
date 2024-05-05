@@ -26,4 +26,10 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> findAll() {
         return articleRepository.findAll();
     }
+
+    @Transactional
+    @Override
+    public void dropOldest() {
+        articleRepository.dropOldest();
+    }
 }

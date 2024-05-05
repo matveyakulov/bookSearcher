@@ -9,4 +9,6 @@ public interface ArticleService {
     Article findByTitle(String title);
 
     List<Article> findAll();
+
+    void dropOldest();
 }

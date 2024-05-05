@@ -14,25 +14,24 @@ public class SearchWindow extends JFrame {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.WHITE);
-        Box verticalBox = Box.createVerticalBox();
-        JScrollPane scroll = new JScrollPane(verticalBox);
-        scroll.setVisible(true);
-        add(scroll);
+        JPanel panel = new JPanel(new GridLayout(10,10,10,10));
+        setLayout(new FlowLayout());
+        add(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Label label = new Label("Ключевые слова для поиска");
         label.setSize(20, 10);
-        verticalBox.add(label, BorderLayout.CENTER);
+        panel.add(label, BorderLayout.CENTER);
         TextField textField = new TextField();
         textField.setSize(20, 10);
-        verticalBox.add(textField, BorderLayout.CENTER);
+        panel.add(textField, BorderLayout.CENTER);
         SearchButton startSearchButton = new SearchButton(textField, this);
-        startSearchButton.setSize(10, 10);
-        verticalBox.add(startSearchButton, BorderLayout.CENTER);
+        startSearchButton.setPreferredSize(new Dimension(200, 30));
+        panel.add(startSearchButton, BorderLayout.CENTER);
         ShowSavedButton button = new ShowSavedButton();
-        button.setSize(10, 10);
-        verticalBox.add(button, BorderLayout.CENTER);
+        button.setPreferredSize(new Dimension(200, 30));
+        panel.add(button, BorderLayout.CENTER);
         setVisible(true);
-        setSize(300, 150);
+        setSize(600, 450);
         setLocation(0, 0);
     }
 }

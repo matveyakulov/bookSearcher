@@ -19,4 +19,10 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             SELECT a FROM Article a
             """)
     List<Article> findAll();
+
+    @Query("""
+            DELETE FROM Article a
+            WHERE a.dropDate < NOW()
+            """)
+    void dropOldest();
 }

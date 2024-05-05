@@ -9,12 +9,13 @@ import java.awt.*;
 public class SearchButton extends JButton {
 
     private final String leninkaUrl = "https://cyberleninka.ru/search?q=";
-    private final String text;
+    private final TextField textField;
     private final SearchWindow searchWindow;
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public SearchButton(String text, SearchWindow searchWindow) {
-        this.text = text;
+    public SearchButton(TextField textField, SearchWindow searchWindow) {
+        setText("Начать поиск");
+        this.textField = textField;
         this.searchWindow = searchWindow;
     }
 
@@ -22,8 +23,8 @@ public class SearchButton extends JButton {
     public void paint(Graphics g) {
         super.paint(g);
         addActionListener(e -> {
-            String answer = restTemplate.getForEntity(leninkaUrl + text, String.class).getBody();
-            JOptionPane.showMessageDialog(searchWindow, answer);
+            String answer = restTemplate.getForEntity(leninkaUrl + textField.getText(), String.class).getBody();
+            JOptionPane.showMessageDialog(HtmlParser.parseText(searchWindow, answer));
         });
     }
 }
